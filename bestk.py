@@ -1,10 +1,11 @@
 # bestk.py
 import pyupbit
 import numpy as np
-import bitcoinAutoTrade as bitauto
+
+ticket ="KRW-CVC"
 
 def get_ror(k=0.5):
-    df = pyupbit.get_ohlcv(bitauto.ticket, interval="minute1", count=10)
+    df = pyupbit.get_ohlcv(ticket, interval="minute1", count=10)
     df['range'] = (df['high'] - df['low']) * k
     df['target'] = df['open'] + df['range'].shift(1)
     df['ror'] = np.where(df['high'] > df['target'], df['close'] / df['target'], 1)
