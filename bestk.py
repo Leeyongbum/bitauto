@@ -2,7 +2,7 @@
 import pyupbit
 import numpy as np
 
-ticket ="KRW-CVC"
+ticket ="KRW-POLYX"
 
 def get_ror(k=0.5):
     df = pyupbit.get_ohlcv(ticket, interval="minute1", count=10)
