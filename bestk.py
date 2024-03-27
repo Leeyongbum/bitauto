@@ -2,10 +2,10 @@
 import pyupbit
 import numpy as np
 
-ticket ="KRW-POLYX"
+ticket ="KRW-BTC"
 
 def get_ror(k=0.5):
-    df = pyupbit.get_ohlcv(ticket, interval="minute1", count=10)
+    df = pyupbit.get_ohlcv(ticket, count=7)
     df['range'] = (df['high'] - df['low']) * k
     df['target'] = df['open'] + df['range'].shift(1)
     df['ror'] = np.where(df['high'] > df['target'], df['close'] / df['target'], 1)
